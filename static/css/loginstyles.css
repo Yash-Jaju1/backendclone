@@ -1,0 +1,84 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body for Login Page */
+.login-page {
+    background-color: #f4f4f9;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Login Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* Login Card */
+.login-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Logo */
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 80px;
+}
+
+.logo-text {
+    font-size: 2em;
+    color: #FF914C;
+    font-weight: 600;
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #FF914C;
+    border-color: #FF914C;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #ec7830;
+    border-color: #ec7830;
+}
+
+/* Footer Links */
+.login-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-footer a {
+    color: #FF914C;
+    text-decoration: none;
+}
+
+.login-footer a:hover {
+    color: #03a9f4;
+}

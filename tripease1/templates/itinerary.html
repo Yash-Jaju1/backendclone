@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TripEase - Itinerary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/dashboard-styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/itinerary-styles.css' %}">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-brand d-flex align-items-center">
+      <img src="{% static 'image/logo.png' %}" alt="TripEase Logo" class="logo-image">
+      <h2 class="logo-text">TripEase</h2>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+      <li><a href="#">Itinerary Templates</a></li>
+      <li><a href="{% url 'accountSettings' %}">Account Settings</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="itinerary-header">
+      <h1>Trip to Paris</h1>
+      <div class="itinerary-actions">
+        <button class="btn-primary">Edit Itinerary</button>
+        <button class="btn-secondary">Approve Itinerary</button>
+        <button class="btn-disabled">Finalize</button>
+      </div>
+    </header>
+
+    <!-- Itinerary Section -->
+    <section class="carousel">
+      <h2 class="categories__title">Itinerary Overview</h2>
+      <div class="carousel__container">
+        
+        <!-- Day 1 -->
+        <div class="carousel-item">
+          <div class="carousel-item__details">
+            <img src="{% static 'image/Paris.png' %}" alt="Paris Day 1" class="carousel-item__image">
+            <div class="carousel-item__day">Day 1</div>
+            <h5 class="carousel-item__details--title">Arrival in Paris</h5>
+            <div class="carousel-item__hover-content">
+              <ul>
+                <li>Check-in at Hotel Le Meurice - 10:00 AM</li>
+                <li>Lunch at Le Jules Verne - 12:00 PM</li>
+                <li>Explore Eiffel Tower - 2:00 PM</li>
+                <li>Dinner at Chez Janou - 7:00 PM</li>
+              </ul>
+              <div class="controls">
+                <button class="btn-edit">Edit</button>
+                <button class="btn-suggestions">AI Suggestions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="carousel-item">
+          <div class="carousel-item__details">
+            <img src="{% static 'image/D2.png' %}" alt="Paris Day 2" class="carousel-item__image">
+            <div class="carousel-item__day">Day 2</div>
+            <h5 class="carousel-item__details--title">Paris City Tour</h5>
+            <div class="carousel-item__hover-content">
+              <ul>
+                <li>Breakfast at Café de Flore - 8:00 AM</li>
+                <li>Louvre Museum Visit - 10:00 AM</li>
+                <li>Lunch at Angelina - 1:00 PM</li>
+                <li>Notre Dame Cathedral - 3:00 PM</li>
+              </ul>
+              <div class="controls">
+                <button class="btn-edit">Edit</button>
+                <button class="btn-suggestions">AI Suggestions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="carousel-item">
+          <div class="carousel-item__details">
+            <img src="{% static 'image/D3.png' %}" alt="Paris Day 3" class="carousel-item__image">
+            <div class="carousel-item__day">Day 3</div>
+            <h5 class="carousel-item__details--title">Versailles Day Trip</h5>
+            <div class="carousel-item__hover-content">
+              <ul>
+                <li>Breakfast at Hotel - 7:30 AM</li>
+                <li>Train to Versailles - 8:30 AM</li>
+                <li>Tour of Versailles Palace - 10:00 AM</li>
+                <li>Lunch at La Petite Venise - 1:00 PM</li>
+                <li>Return flight from Paris - 4:00 PM</li>
+              </ul>
+              <div class="controls">
+                <button class="btn-edit">Edit</button>
+                <button class="btn-suggestions">AI Suggestions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- Approval Status Section -->
+  <section class="approval-status">
+    <h2>Approval Status</h2>
+    <ul>
+      <li>
+        <span class="john-doe">John Doe: Approved on September 8, 2024</span>
+        <button class="btn-approve-status1 approved">Approved</button>
+      </li>
+      <li>
+        <span>Jane Smith: Pending Approval</span>
+        <button class="btn-approve-status2 remind-btn">Remind</button>
+      </li>
+      <li>
+        <span>Emily Clark: Pending Approval</span>
+        <button class="btn-approve-status remind-btn">Remind</button>
+      </li>
+    </ul>
+    <p class="finalize-info">All participants must approve the trip to enable finalization.</p>
+  </section>
+
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    mobileMenu.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

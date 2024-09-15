@@ -1,0 +1,89 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Signup Container */
+.signup-container {
+  margin-top: 38px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-card {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  max-height: 85vh; /* Limit the card's height to 85% of the viewport height */
+  margin: 20px;
+  overflow-y: auto; /* Enable internal scroll if the content exceeds the max height */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+/* Logo */
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-image {
+  width: 60px;
+}
+
+.logo-text {
+  font-size: 1.8em;
+  color: #FF914C;
+}
+
+/* Form Control */
+.form-control {
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: #FF914C;
+  border-color: #FF914C;
+  border-radius: 30px;
+  padding: 10px 20px;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background-color: #ec7830;
+  border-color: #f17223;
+}
+
+/* Link Styles */
+.login-link {
+  color: #FF914C;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  color: #2b00ff;
+  text-decoration: none;
+}
+
+/* Footer */
+footer {
+  background-color: #f4f4f9;
+  color: #333;
+}

@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TripEase - Sign Up</title>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/register_styles.css' %}">
+</head>
+<body class="body">
+
+  <section class="signup-container d-flex justify-content-center align-items-center">
+    <div class="signup-card card shadow-sm">
+      <div class="card-body">
+        <div class="logo text-center mb-4">
+          <img src="{% static 'image/logo.png' %}" alt="Trip Ease Logo" class="logo-image">
+          <div class="logo-text">TripEase</div>
+        </div>
+        <form method="post" action="{% url 'register' %}">
+          {% csrf_token %}
+          {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+              Please correct the errors below.
+            </div>
+          {% endif %}
+          <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {{ form.name.errors }}
+          </div>
+          <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.username.errors }}
+          </div>
+          <div class="form-group">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {{ form.email.errors }}
+          </div>
+          <div class="form-group">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+          </div>
+          <div class="form-group">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+          </div>
+          <div class="form-group">
+            {{ form.contact_number.label_tag }}
+            {{ form.contact_number }}
+            {{ form.contact_number.errors }}
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+        </form>
+        <div class="signup-footer text-center mt-3">
+          <p>Already have an account? <a href="{% url 'login' %}" class="login-link">Log In</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TripEase - Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/dashboard-styles.css' %}">
+</head>
+<body>
+
+  <!-- Navbar with Burger Menu -->
+  <nav class="navbar">
+    
+    <div class="navbar-brand d-flex align-items-center">
+      <img src="{% static 'image/logo.png' %}" alt="TripEase Logo" class="logo-image">
+      <h2 class="logo-text">TripEase</h2>
+    </div>
+    <!-- Burger Menu -->
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="nav-links">
+      <!-- <li><a href="#">Dashboard</a></li> -->
+      <!-- <li><a href="#">Create New Trip</a></li> -->
+      <li><a href="#">Join a Trip</a></li>
+      <li><a href="#">Itinerary Templates</a></li>
+      <li><a href="#">Notifications</a></li>
+      <li><a href="{% url 'accountSettings' %}">Account Settings</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content of the Dashboard -->
+  <div class="main-content">
+    <header class="dashboard-header">
+      <h1>Welcome, {{ username }}</h1>
+      <div class="user-actions">
+        <a class="btn-logout" href="{% url 'index' %}">Log Out</a>
+      </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="overview">
+      <h2>Your Trips</h2>
+      <div class="trip-cards">
+        <div class="trip-card">
+          <h3>Trip to Paris</h3>
+          <p>Departure: 12th Oct 2024</p>
+          <p>Status: Ongoing</p>
+          <button class="btn-view" onclick="window.location.href='{% url 'itinerary' %}'">View Trip</button>
+        </div>
+        <div class="trip-card">
+          <h3>Road Trip to Italy</h3>
+          <p>Departure: 25th Nov 2024</p>
+          <p>Status: Planning</p>
+          <button class="btn-view">View Trip</button>
+        </div>
+      </div>
+      <button class="btn-create-trip" onclick="window.location.href='{% url 'creationForm' %}'">Create New Trip</button>
+    </section>
+
+    <!-- Notifications Section -->
+    <section class="notifications">
+      <h2>Notifications</h2>
+      <div class="notification-list">
+        <div class="notification-item">
+          <p>Trip to Paris: Itinerary approved by Sarah.</p>
+          <button class="btn-view">View</button>
+        </div>
+        <div class="notification-item">
+          <p>Road Trip to Italy: Reminder to approve the itinerary.</p>
+          <button class="btn-view">View</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript for Burger Menu -->
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+
+    mobileMenu.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

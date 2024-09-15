@@ -1,0 +1,113 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    font-family: 'Poppins', sans-serif;
+}
+
+.account-settings-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 600px;
+}
+
+.settings-card {
+    background-color: white;
+    padding: 40px; 
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 850px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto; 
+}
+
+/* Logo */
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 80px;
+}
+
+.logo-text {
+    font-size: 2em;
+    color: #FF914C;
+    font-weight: 600;
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary, .btn-success {
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: #FF914C;
+    border-color: #FF914C;
+}
+
+.btn-primary:hover {
+    background-color: #e46e25;
+    border-color: #FF914C;
+}
+
+.btn-secondary {
+    background-color: #FF914C;
+    border-color: #FF914C;
+}
+
+.btn-secondary:hover {
+    background-color: #e46e25;
+    color: white;
+}
+
+.btn-success {
+    background-color: #FF914C;
+    border-color: #FF914C;
+}
+
+.btn-success:hover {
+    background-color: #e46e25;
+}
+
+/* Footer */
+.settings-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.settings-footer a {
+    color: #FF914C;
+    text-decoration: none;
+}
+
+.settings-footer a:hover {
+    color: #e46e25;
+}

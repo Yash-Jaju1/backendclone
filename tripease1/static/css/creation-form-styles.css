@@ -1,0 +1,133 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+}
+
+
+.form-control{
+    color: rgb(178, 173, 173);
+}
+.form-section {
+    display: none;
+    padding: 20px;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="date"], input[type="number"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+.next-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.next-btn {
+    background-color: #FF914C;
+    color: white;
+    border-radius: 7px;
+    /* margin-top: 10px; */
+    /* margin-bottom: -10px;/   */
+    border: #FF914C;
+    margin-top: 2px ;
+    padding: -2px;
+}
+
+.next-btn:hover{
+    background-color: #ec7830;
+}
+
+.prev-btn {
+    background-color: #FF914C;
+    margin-top: 10px;
+    color: white;
+    border: #FF914C;
+}
+
+
+.submit-btn {
+    background-color:#FF914C;
+    color: white;
+    border: #FF914C;
+}
+
+.submit-btn:hover{
+    background-color: #ec7830;
+}
+/* 
+button:hover {
+    opacity: 0.8;
+} */
+
+@media (max-width: 600px) {
+    .form-container {
+        padding: 10px;
+    }
+}
+
+
+.tripbasics-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.tripease-logo{
+    height: 55px;
+    width: 60px;
+}
+
+
+.tripease-title{
+    font-size:1.8rem;
+    padding-top:25px;
+    font-weight: 600;
+}
+
+.second-page-button{
+    display: flex;
+    justify-content: space-between;
+
+}
+.mb-4{
+    text-align: center;
+}

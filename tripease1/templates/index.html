@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TripEase - Plan Your Perfect Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <header class="main-header bg-white border-bottom">
+    <div class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="{% static 'image/logo.png' %}" alt="TripEase Logo" class="logo-image">
+        <span class="logo-text">TripEase</span>
+      </a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#">Explore Templates</a></li> -->
+          <li class="nav-item"><a class="nav-link" href="#">Join a Trip</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero d-flex justify-content-center align-items-center text-center text-white">
+    <video autoplay muted loop class="hero-video">
+      <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+      <h2 class="tagline">Discover Your Next Adventure</h2>
+      <p class="description">Personalized trip planning with community insights and tailored itineraries.</p>
+      <div class="cta-buttons">
+        <a href="{% url 'login1' %}" class="btn primary-btn">Start Planning</a>
+        <a href="#" class="btn secondary-btn">Explore Templates</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features py-5 text-center bg-white">
+    <h3>Why Choose TripEase?</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <h4 class="card-title">Itinerary Creation</h4>
+            <p class="card-text">Create detailed plans for your trips effortlessly.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <h4 class="card-title">Group Collaboration</h4>
+            <p class="card-text">Plan with friends and family in real-time.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <h4 class="card-title">Budget Tracking</h4>
+            <p class="card-text">Stay within budget with our expense tracker.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-container py-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a class="logo-link d-flex align-items-center" href="#">
+            <img class="logo-svg" src="{% static 'image/logo.png' %}" alt="TripEase Logo">
+            <p class="tripease-text">TripEase</p>
+          </a>
+          <p class="filler-text">Explore the world with us.</p>
+          <div class="social d-flex">
+            <a class="social-link" href="#"><img src="{% static 'image/instagram.svg' %}" class="social-icon" alt="Instagram"></a>
+            <a class="social-link" href="#"><img src="{% static 'image/fb.png' %}" class="social-icon" alt="Facebook"></a>
+            <a class="social-link" href="#"><img src="{% static 'image/twitter.svg' %}" class="social-icon" alt="Twitter"></a>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="footer-grid-heading">Products</div>
+              <ul class="footer-links-list">
+                <li><a href="#overview" class="footer-link">Overview</a></li>
+                <li><a href="#rental" class="footer-link">Rental</a></li>
+                <li><a href="#pricing" class="footer-link">Pricing</a></li>
+                <li><a href="#trips" class="footer-link">Trips</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <div class="footer-grid-heading">Company</div>
+              <ul class="footer-links-list">
+                <li><a href="#about" class="footer-link">About</a></li>
+                <li><a href="#jobs" class="footer-link">Jobs</a></li>
+                <li><a href="#blog" class="footer-link">Blog</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <div class="footer-grid-heading">Support</div>
+              <ul class="footer-links-list">
+                <li><a href="#contact" class="footer-link">Contact</a></li>
+                <li><a href="#documentation" class="footer-link">Documentation</a></li>
+                <li><a href="#faq" class="footer-link">FAQ</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <div class="footer-grid-heading">Legal</div>
+              <ul class="footer-links-list">
+                <li><a href="#" class="footer-link">Terms of Service</a></li>
+                <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                <li><a href="#" class="footer-link">Cookie Settings</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright text-center mt-3">
+        © 2024 - Present TripEase. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

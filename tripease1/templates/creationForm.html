@@ -1,0 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Creation Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/creation-form-styles.css' %}">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="form-container bg-white p-4 rounded shadow-sm">
+            <form id="trip-form">
+                <!-- Section 1: Basic Information -->
+                <div class="form-section" id="section1">
+                    <div class="tripbasics-div">
+                        <img src="{% static 'image/logo.png' %}" alt="TripEase" class="tripease-logo">
+                        <h2 class="tripease-title">Trip Basics</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination:</label>
+                        <input type="text" class="form-control" id="destination" name="destination" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="start-date">Start Date:</label>
+                        <input type="date" class="form-control" id="start-date" name="start-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end-date">End Date:</label>
+                        <input type="date" class="form-control" id="end-date" name="end-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Estimated Budget:</label>
+                        <input type="number" class="form-control" id="budget" name="budget" min="0" required>
+                    </div>
+                    <div class="next-button">
+                        <button type="button" class="btn btn-primary next-btn" onclick="showSection(2)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Preferences and Activities -->
+                <div class="form-section" id="section2">
+                    <h2 class="mb-4">Preferences</h2>
+                    <div class="form-group">
+                        <label for="activity-type">Preferred Activities:</label>
+                        <select id="activity-type" name="activity-type" class="form-control" required>
+                            <option value="relaxation">Relaxation</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="social">Socializing</option>
+                            <option value="exploration">Exploration</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cuisine">Favorite Cuisine:</label>
+                        <select id="cuisine" name="cuisine" class="form-control" required>
+                            <option value="italian">Italian</option>
+                            <option value="asian">Asian</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="american">American</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="accommodation">Preferred Accommodation:</label>
+                        <select id="accommodation" name="accommodation" class="form-control" required>
+                            <option value="hotel">Hotel</option>
+                            <option value="hostel">Hostel</option>
+                            <option value="airbnb">Airbnb</option>
+                            <option value="camping">Camping</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="group-size">Group Size:</label>
+                        <input type="number" class="form-control" id="group-size" name="group-size" min="1" required>
+                    </div>
+
+                    <div class="second-page-button">
+                        <button type="button" class="btn btn-secondary prev-btn" onclick="showSection(1)">Previous</button>
+                        <button type="button" class="btn btn-primary next-btn" onclick="showSection(3)">Next</button>
+                    </div>
+                </div>
+
+                <!-- Section 3: Group and Summary -->
+                <div class="form-section" id="section3">
+                    <h2 class="mb-4">Group and Summary</h2>
+                    <div class="form-group">
+                        <label for="group-name">Group Name:</label>
+                        <input type="text" class="form-control" id="group-name" name="group-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="group-members">Group Members (emails, separated by commas):</label>
+                        <input type="text" class="form-control" id="group-members" name="group-members" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="special-notes">Special Notes:</label>
+                        <textarea id="special-notes" name="special-notes" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="second-page-button">
+                        <button type="button" class="btn btn-secondary prev-btn" onclick="showSection(2)">Previous</button>
+                        <button type="submit" class="btn btn-success submit-btn">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showSection(sectionNumber) {
+            document.querySelectorAll('.form-section').forEach((section, index) => {
+                section.style.display = (index + 1 === sectionNumber) ? 'block' : 'none';
+            });
+        }
+        
+        // Initialize the form to show the first section
+        showSection(1);
+    </script>
+</body>
+</html>
