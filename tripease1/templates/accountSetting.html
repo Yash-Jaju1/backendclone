@@ -21,59 +21,32 @@
       </div>
       
       <!-- Update Email -->
-      <form id="update-email-form" onsubmit="return updateEmail(event)">
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" class="form-control" placeholder="Enter your Email" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block mb-3">Update Email</button>
+      <form method="post" action="{% url 'accountSetting' %}">
+        {% csrf_token %}
+        {{ email_form.as_p }}
+        <button type="submit" name="update-email" class="btn btn-primary btn-block mb-3">Update Email</button>
       </form>
 
       <!-- Update Phone Number -->
-      <form id="update-phone-form" onsubmit="return updatePhone(event)">
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" class="form-control" placeholder="Enter your Mobile Number" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block mb-3">Update Phone Number</button>
+      <form method="post" action="{% url 'accountSetting' %}">
+        {% csrf_token %}
+        {{ phone_form.as_p }}
+        <button type="submit" name="update-phone" class="btn btn-primary btn-block mb-3">Update Phone Number</button>
       </form>
 
       <!-- Change Password -->
-      <form id="update-password-form" onsubmit="return updatePassword(event)">
-        <div class="form-group">
-          <label for="current-password">Current Password</label>
-          <input type="password" id="current-password" class="form-control" placeholder="Enter your current password">
-        </div>
-        <div class="form-group">
-          <label for="new-password">New Password</label>
-          <input type="password" id="new-password" class="form-control" placeholder="Enter your new password">
-        </div>
-        <div class="form-group">
-          <label for="confirm-password">Confirm New Password</label>
-          <input type="password" id="confirm-password" class="form-control" placeholder="Confirm your new password">
-          <small id="password-error" class="form-text text-danger" style="display: none;">Passwords do not match!</small>
-        </div>
-        <button type="submit" class="btn btn-secondary btn-block mb-4">Change Password</button>
+      <form method="post" action="{% url 'accountSetting' %}">
+        {% csrf_token %}
+        {{ password_form.as_p }}
+        <button type="submit" name="change-password" class="btn btn-secondary btn-block mb-4">Change Password</button>
       </form>
 
       <!-- Notification Preferences -->
       <h5 class="mb-3">Notification Preferences</h5>
-      <form id="update-preferences-form" onsubmit="return updatePreferences(event)">
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="notify-email" checked>
-            <label class="form-check-label" for="notify-email">
-              Email Notifications
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="notify-sms">
-            <label class="form-check-label" for="notify-sms">
-              SMS Notifications
-            </label>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-success btn-block">Update Preferences</button>
+      <form method="post" action="{% url 'accountSetting' %}">
+        {% csrf_token %}
+        {{ preferences_form.as_p }}
+        <button type="submit" name="update-preferences" class="btn btn-success btn-block">Update Preferences</button>
       </form>
 
       <div class="settings-footer text-center mt-4">
@@ -86,65 +59,5 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
-  <script>
-    // Update Email Handler
-    function updateEmail(event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value;
-      if (!email) {
-        alert("Please fill in your email address.");
-        return false;
-      }
-      alert("Email updated successfully!");
-      return true;
-    }
-
-    // Update Phone Number Handler
-    function updatePhone(event) {
-      event.preventDefault();
-      const phone = document.getElementById('phone').value;
-      if (!phone) {
-        alert("Please fill in your phone number.");
-        return false;
-      }
-      alert("Phone number updated successfully!");
-      return true;
-    }
-
-    // Update Password Handler
-    function updatePassword(event) {
-      event.preventDefault();
-      const currentPassword = document.getElementById('current-password').value;
-      const newPassword = document.getElementById('new-password').value;
-      const confirmPassword = document.getElementById('confirm-password').value;
-
-      // Check if new password fields are filled
-      if (newPassword) {
-        if (!currentPassword) {
-          alert("Please enter your current password.");
-          return false;
-        }
-
-        // Check if passwords match
-        if (newPassword !== confirmPassword) {
-          document.getElementById('password-error').style.display = "block";
-          return false;
-        }
-
-        alert("Password updated successfully!");
-        return true;
-      } else {
-        alert("Please enter a new password.");
-        return false;
-      }
-    }
-
-    // Update Preferences Handler
-    function updatePreferences(event) {
-      event.preventDefault();
-      alert("Notification preferences updated successfully!");
-      return true;
-    }
-  </script>
 </body>
 </html>

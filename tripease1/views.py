@@ -1,44 +1,64 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import update_session_auth_hash, authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CustomUserCreationForm, CustomAuthenticationForm, TripForm
+from .forms import CustomUserCreationForm, CustomAuthenticationForm, TripForm, UpdateEmailForm, UpdatePhoneForm, PasswordChangeCustomForm, NotificationPreferencesForm
 from django.db import IntegrityError
+from .models import UserProfile
+
 
 def index(request):
     return render(request, 'index.html')
 
+@login_required
 def accountSetting(request):
+    email_form = UpdateEmailForm(instance=request.user)
+    phone_form = UpdatePhoneForm(instance=request.user.userprofile)
+    password_form = PasswordChangeCustomForm(user=request.user)
+    preferences_form = NotificationPreferencesForm(instance=request.user.userprofile)
+
     if request.method == 'POST':
-        # Handle form submissions for updating user details
-        # For simplicity, handling only email and phone updates here
         if 'update-email' in request.POST:
-            email = request.POST.get('email')
-            request.user.email = email
-            request.user.save()
-            messages.success(request, "Email updated successfully!")
-        elif 'update-phone' in request.POST:
-            phone = request.POST.get('phone')
-            # Assuming you have a field for phone in your user profile model
-            # request.user.profile.phone = phone
-            # request.user.profile.save()
-            messages.success(request, "Phone number updated successfully!")
-        elif 'change-password' in request.POST:
-            current_password = request.POST.get('current-password')
-            new_password = request.POST.get('new-password')
-            confirm_password = request.POST.get('confirm-password')
-
-            if not request.user.check_password(current_password):
-                messages.error(request, "Current password is incorrect.")
-            elif new_password != confirm_password:
-                messages.error(request, "New passwords do not match.")
+            email_form = UpdateEmailForm(request.POST, instance=request.user)
+            if email_form.is_valid():
+                email_form.save()
+                messages.success(request, 'Email updated successfully!')
             else:
-                request.user.set_password(new_password)
-                request.user.save()
-                messages.success(request, "Password updated successfully!")
-                return redirect('login')  # Redirect to login after password change
+                messages.error(request, 'Error updating email.')
+        
+        elif 'update-phone' in request.POST:
+            phone_form = UpdatePhoneForm(request.POST, instance=request.user.userprofile)
+            if phone_form.is_valid():
+                phone_form.save()
+                messages.success(request, 'Phone number updated successfully!')
+            else:
+                messages.error(request, 'Error updating phone number.')
+        
+        elif 'change-password' in request.POST:
+            password_form = PasswordChangeCustomForm(user=request.user, data=request.POST)
+            if password_form.is_valid():
+                password_form.save()
+                update_session_auth_hash(request, password_form.user)  # Important!
+                messages.success(request, 'Password changed successfully!')
+            else:
+                messages.error(request, 'Error changing password: {}'.format(password_form.errors.as_text()))
+        
+        elif 'update-preferences' in request.POST:
+            preferences_form = NotificationPreferencesForm(request.POST, instance=request.user.userprofile)
+            if preferences_form.is_valid():
+                preferences_form.save()
+                messages.success(request, 'Notification preferences updated successfully!')
+            else:
+                messages.error(request, 'Error updating preferences.')
 
-    return render(request, 'accountSetting.html')
+    context = {
+        'email_form': email_form,
+        'phone_form': phone_form,
+        'password_form': password_form,
+        'preferences_form': preferences_form,
+    }
+
+    return render(request, 'accountSetting.html', context)
 
 def creationForm(request):
     if request.method == 'POST':
